@@ -5,7 +5,7 @@ import axios from "axios";
 // });
 
 export const api = axios.create({
-	baseURL: "http://e3r10p16.1337.ma:3001/api/v1",
+	baseURL: "http://localhost:4000/api/v1",
 });
 
 let hostname;
@@ -19,5 +19,5 @@ else
   hostname = window.location.hostname;
 
 export const localApi = axios.create({
-	  baseURL: `http://${hostname}:3000/api`,
+	  baseURL: `http://localhost:3000/api`,
 });

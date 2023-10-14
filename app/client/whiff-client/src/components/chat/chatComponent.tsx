@@ -411,7 +411,7 @@ export default function ChatComponent() {
   };
 
   useEffect(() => {
-    const socket = io("http://e3r10p16.1337.ma:8889/", {
+    const socket = io("http://localhost:8889/", {
       extraHeaders: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },

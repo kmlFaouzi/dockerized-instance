@@ -27,7 +27,7 @@ export const SocketProvider = ({ children }: any) => {
   useEffect(() => {
     if (socket !== null)
       return ;
-    const newSocket = io("http://e3r10p16.1337.ma:8887/", {
+    const newSocket = io("http://localhost:8887/", {
       extraHeaders: {
         authorization: "Bearer " + localStorage.getItem("token"),
       },

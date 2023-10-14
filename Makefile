@@ -7,4 +7,9 @@ down:
 
 fclean:
 	rm -rf ./app/client/whiff-client/node_modules
-	rm -rf ./app/client
+	rm -rf ./app/client/whiff-client/.next
+	rm -rf ./app/server/whiff-whaff/node_modules
+	rm -rf ./app/server/whiff-whaff/dist
+	rm -rf ./app/whiff-data/*
+
+re: fclean up
