@@ -43,6 +43,7 @@ export const getServerSideProps = withIronSessionSsr(
 			return true;
 		}
 		);
+		
 		return ( {
 			props : {
 				data : {
@@ -52,7 +53,7 @@ export const getServerSideProps = withIronSessionSsr(
 			}
 		})
     } catch (error: any) {
-      return {
+		return {
         redirect: {
           destination: "/login",
           permanent: false,

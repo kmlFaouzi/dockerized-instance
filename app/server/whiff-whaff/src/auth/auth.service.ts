@@ -113,10 +113,11 @@ export class AuthService {
 			if (!existsUser) {
 				existsUser = await this.userService.createUser(dto);
 			}
-			if (existsUser.twoFactorAuth == true)
+			if (existsUser.otpEnable == true) {
 				return { id: existsUser.id, twoFa: true };
+			}
 			const token = await this.signToken({ id: existsUser.id, email: existsUser.email, user: existsUser.userName }, this.config.get(env.JWT_SECRET), this.config.get(env.JWT_EXPIRATION_TIME));
-			return ({ token: token });
+			return ({ token: token, twoFa: false  });
 		} catch (error) {
 			throw new InternalServerErrorException();
 		}

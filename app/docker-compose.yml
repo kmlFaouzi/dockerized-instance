@@ -22,7 +22,7 @@ services:
     image: node:lts-alpine
     working_dir: /app
     command: sh -c "npm i
-                    && npx prisma migrate deploy
+                    && npx prisma migrate dev --name init
                     && npm run build
                     && npm run start"
     env_file: ./.env

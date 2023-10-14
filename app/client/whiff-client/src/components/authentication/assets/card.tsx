@@ -169,11 +169,11 @@ export default function Card(props: { Mode: "signin" | "signup" }) {
           localStorage.setItem("token", token);
           const r = await localApi.post("/saveToken", { token }); //storing the token after the user validate the email only
 		  if (props.Mode === "signup") {
-            setNeedsVerification((prev) => !prev);
-            setTimeout(() => {
-              setNeedsVerification(false);
+            // setNeedsVerification((prev) => !prev);
+            // setTimeout(() => {
+            //   setNeedsVerification(false);
               router.push("/login");
-            }, 2000);
+            // }, 2000);
           } else if (props.Mode === "signin")
 		  {
 			if (twoFa === true)
@@ -202,26 +202,26 @@ export default function Card(props: { Mode: "signin" | "signup" }) {
     }
   };
 
-  useEffect(() => {
-    const { validation } = router.query;
-    if (validation == "true") {
-      setIsValid(true);
-      setNeedsVerification(true);
-      setTimeout(() => {
-        setNeedsVerification(false);
-        setIsValid(false);
-      }, 2000);
+//   useEffect(() => {
+//     const { validation } = router.query;
+//     if (validation == "true") {
+//       setIsValid(true);
+//       setNeedsVerification(true);
+//       setTimeout(() => {
+//         setNeedsVerification(false);
+//         setIsValid(false);
+//       }, 2000);
 
-    } else if (validation == 'false'){
-		setIsValid(false);
-      setNeedsVerification(true);
-      setTimeout(() => {
-        setNeedsVerification(false);
-      }, 2000);
-	}
-	else
-		setNeedsVerification(false);
-  }, [router.query]);
+//     } else if (validation == 'false'){
+// 		setIsValid(false);
+//       setNeedsVerification(true);
+//       setTimeout(() => {
+//         setNeedsVerification(false);
+//       }, 2000);
+// 	}
+// 	else
+// 		setNeedsVerification(false);
+//   }, [router.query]);
 
   return (
     <div className="min-h-1 min-w-1 z-10 px-6 md:px-24 md:py-20 py-6 flex items-center justify-center flex-col space-y-8 md:space-y-16 bg-DarkGrey rounded-xl">

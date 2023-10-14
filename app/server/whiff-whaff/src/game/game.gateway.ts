@@ -44,11 +44,7 @@ export class GameGateway implements OnGatewayConnection {
 		else {
 			this.connectedUsers.set(client.id, { id: (validUser as any).id, socket: client, username: (validUser as any).user });
 			const Status = { id: (validUser as any).id, status: PlayerStatus.IN_GAME };
-			console.log('start connetion from game', (validUser as any).user, 'with : ', client.id);
-			axios.post('http://e3r10p16.1337.ma:3001/api/v1/game/status', Status).then((res) => { }).catch((err) => {
-				console.log(err);
-			});
-			console.log('finish connetion from game');
+			axios.post('http://localhost:4000/api/v1/game/status', Status).then((res) => { }).catch((err) => { });
 		}
 	}
 
@@ -147,11 +143,7 @@ export class GameGateway implements OnGatewayConnection {
 		let username: string = this.connectedUsers.get((client as any).id)?.username;
 		const Status = { id: this.connectedUsers.get((client as any).id)?.id, status: PlayerStatus.ONLINE };
 		if (Status.id) {
-			console.log('start disconnection from game', client.id);
-			axios.post('http://e3r10p16.1337.ma:3001/api/v1/game/status', Status).then((res) => { }).catch((err) => {
-				console.log(err);
-			});
-			console.log('finish disconnection from game');
+			axios.post('http://localhost:4000/api/v1/game/status', Status).then((res) => { }).catch((err) => {});
 		}
 		this.connectedUsers.delete(client.id);
 		let index: number = this.inviteFriendsArray.findIndex((element: GameService) => element.id2 === username || element.id1 === username);
